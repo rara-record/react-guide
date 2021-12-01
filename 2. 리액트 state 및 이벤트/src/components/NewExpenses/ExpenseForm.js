@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ExpenseForm.css';
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
 
   const [enteredTitle, setEnteredTitle] = useState('');
   const [enteredAmount, setEnteredAmount] = useState('');
@@ -28,10 +28,12 @@ const ExpenseForm = () => {
     const expenseData = {
       title: enteredTitle,
       amount: enteredAmount,
-      data: new Date(enteredDate)
+      date: new Date(enteredDate),
     };
 
-    console.log(expenseData)
+    // 상위 컴포넌트로 state 올리기
+    props.onSaveExpenseData(expenseData);
+
     // input 초기화
     setEnteredTitle('');
     setEnteredAmount('');
