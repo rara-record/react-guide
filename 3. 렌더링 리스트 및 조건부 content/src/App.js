@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import NewExpense from './components/NewExpenses/NewExpense';
 import Expenses from './components/Expenses/Expenses';
 
 const App = () => {
-  const expenses = [
+
+  // 초기 배열
+  const DUMMY_EXPENSES = [
     {
       id: 'e1',
       title: 'Toilet Paper',
@@ -26,9 +28,12 @@ const App = () => {
     },
   ];
 
+  // 초기배열의 state
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+
+  // form에서 받은 데이터를 초기배열 첫번째 값으로 추가하고, 기존 배열을 나열한다
   const addExpenseHandler = expense => {
-    console.log('In App.js');
-    console.log(expense);
+    setExpenses([expense, ...expenses]);
   };
 
   return (

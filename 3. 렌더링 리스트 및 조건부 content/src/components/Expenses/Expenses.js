@@ -12,6 +12,7 @@ function Expenses(props) {
     setFilteredYear(selectedYear);
   };
 
+  // App.js에서 가져온 배열에서 데이터 추출
   return (
     <>
       <Card className="expenses">
@@ -23,6 +24,7 @@ function Expenses(props) {
 
         {props.items.map((expense) => (
           <ExpenseItem
+            key={expense.id}
             title={expense.title}
             amount={expense.amount}
             date={expense.date}
