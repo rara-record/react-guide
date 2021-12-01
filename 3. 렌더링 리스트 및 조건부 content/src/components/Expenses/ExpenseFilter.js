@@ -8,6 +8,8 @@ const ExpenseFilter = (props) => {
     props.onChangeFilter(event.target.value)
   }
 
+  // select.option === props.item.date
+
   return (
     <div className="expenses-filter">
       <div className="expenses-filter__control">

@@ -12,6 +12,10 @@ function Expenses(props) {
     setFilteredYear(selectedYear);
   };
 
+  const filterExpenses = props.items.filter(expense => {
+    return expense.date.getFullYear().toString() === filteredYear;
+  });
+
   // App.js에서 가져온 배열에서 데이터 추출
   return (
     <>
@@ -22,7 +26,7 @@ function Expenses(props) {
           onChangeFilter={filterChangeHandler}
         />
 
-        {props.items.map((expense) => (
+        {filterExpenses.map((expense) => (
           <ExpenseItem
             key={expense.id}
             title={expense.title}
