@@ -4,10 +4,13 @@ import ExpenseItem from './ExpenseItem';
 import './ExpenseList.css';
 
 const ExpenseList = (props) => {
+
+  // 필터링된 데이터 아이템이 없다면?
   if (props.items.length === 0) {
     return <h2 className='expenses-list__fallback'>Found no expenses.</h2>;
   }
 
+  // 필터링된 데이터 아이템 출력
   return (
     <ul className='expenses-list'>
       {props.items.map((expense) => (

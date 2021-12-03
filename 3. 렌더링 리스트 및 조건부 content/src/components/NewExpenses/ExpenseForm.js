@@ -27,7 +27,7 @@ const ExpenseForm = (props) => {
     // 변경한 state(value)값을 오브젝트에 담는다
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
 
