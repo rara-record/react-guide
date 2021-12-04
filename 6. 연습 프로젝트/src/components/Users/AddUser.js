@@ -13,16 +13,17 @@ const AddUser = (props) => {
   // 폼 제출 함수
   const addUserHandler = event => {
     event.preventDefault();
-    // input값 유효성 체크 : 비어있다면 리턴
-    if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
-      return;
-    }
 
-    // 유저 나이 유효성 체크
-    if (enteredAge < 1) {
+    // input값 유효성 체크 : 비어있다면 리턴
+    if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0 || (!isNaN(enteredUsername))) {
       return;
     }
-    console.log(enteredUsername, enteredAge)
+    // 유저 나이 유효성 체크
+    if (enteredAge < 1 || enteredAge > 120) {
+      return;
+    }
+    // App.js로 데이터 보내주기
+    props.onAddUser(enteredUsername, enteredAge);
     setEnteredUsername('');
     setEnteredAge('');
   }
@@ -34,8 +35,6 @@ const AddUser = (props) => {
   const ageChangeHandler = (event) => {
     setEnteredAge(event.target.value);
   }
-
-
 
   return (
     <Card className={classes.input}>
