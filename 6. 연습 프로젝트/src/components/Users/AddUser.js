@@ -13,7 +13,18 @@ const AddUser = (props) => {
   // 폼 제출 함수
   const addUserHandler = event => {
     event.preventDefault();
+    // input값 유효성 체크 : 비어있다면 리턴
+    if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
+      return;
+    }
+
+    // 유저 나이 유효성 체크
+    if (enteredAge < 1) {
+      return;
+    }
     console.log(enteredUsername, enteredAge)
+    setEnteredUsername('');
+    setEnteredAge('');
   }
 
   const usernameChangeHandler = (event) => {
@@ -25,7 +36,6 @@ const AddUser = (props) => {
   }
 
 
-  // 두가지 값을 얻는다. username + age
 
   return (
     <Card className={classes.input}>
@@ -34,6 +44,7 @@ const AddUser = (props) => {
         <input
           id="username"
           type="text"
+          value={enteredUsername}
           onChange={usernameChangeHandler}
         >
         </input>
@@ -42,6 +53,7 @@ const AddUser = (props) => {
         <input
           id="age"
           type="number"
+          value={enteredAge}
           onChange={ageChangeHandler}
         >
         </input>
